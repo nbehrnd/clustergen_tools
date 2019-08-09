@@ -1,0 +1,40 @@
+
+# name:   README.org
+# author: nbehrnd@yahoo.com
+# date:   2019-08-09 (YYYY-MM-DD)
+
+* Background
+
+  Based on =.cif= files, CLUSTERGEN[fn:1] provides facilitates to
+  identify and write =.xyz= files about dimers and clusters suitable
+  for further analysis and quantum chemical computation.  It equally
+  offers the direct output in formats suitable for ADF and Gaussian.
+
+  To automate the identification of "interesting dimers", =.cif= model
+  data may be converted batch-wise into intermediate =.inp= input files
+  suitable for a sequential processing with CLUSTERGEN's =.f90= source
+  code.  Similarly, it is possible to systematically build clusters.
+  Three complementary definitions regarding the distance threshold of
+  inner (reference) molecule and most outer neighbor are available.
+
+* Use
+
+  Put the =.cif= of interest, the =.f90= source code of CLUSTERGEN
+  (available from the author) and the two scripts into the same
+  folder.  A call of
+  #+BEGIN_SRC python 
+    python cif2clustergen.py
+  #+END_SRC
+  creates the intermediate =.inp= files.  A subsequent
+  #+BEGIN_SRC python
+    python serial_clustergen.py
+  #+END_SRC
+  then both compiles the source-code with =gfortran=, as well provides
+  the results accessed by =CLUSTERGEN=.
+* Footnotes
+
+[fn:1] "CLUSTERGEN: a program for molecular cluster generation from
+crystallographic data", R. Kaminski, K. N. Jarzembska and S. Domagala
+in /J. Appl. Cryst./ (2013) **46**, 540-543,
+[[doi:10.1107/S0021889813002173][doi:10.1107/S0021889813002173]]; Windows compiled executable on
+[[http://www.photocrystallography.eu/software.html][http://www.photocrystallography.eu/software.html]].
